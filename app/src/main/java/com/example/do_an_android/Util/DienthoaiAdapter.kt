@@ -102,13 +102,13 @@ class DienthoaiAdapter(var context: Context, var arraydienthoai: ArrayList<DienT
             viewHolder = view.tag as ViewHolder
         }
         val sanpham = getItem(i) as DienThoai
-        viewHolder!!.title!!.text = sanpham.getNameproduct() + ""
+        viewHolder!!.title!!.text = sanpham.nameproduct+ ""
         val formatter = DecimalFormat("###,###,###")
-        viewHolder.subtitle!!.text = formatter.format(sanpham.getPrice().toLong()) + "" + " VNĐ"
+        viewHolder.subtitle!!.text = formatter.format(sanpham.price.toLong()) + "" + " VNĐ"
         viewHolder.soluong!!.text =
-            "Số lượng còn lại : " + formatter.format(+sanpham.getSum().toLong())
-        viewHolder.motasanpham!!.text = sanpham.getBnt()
-        Glide.with(context).load(sanpham.getHinh()).into(viewHolder.hinh!!)
+            "Số lượng còn lại : " + formatter.format(+sanpham.sum.toLong())
+        viewHolder.motasanpham!!.text = sanpham.bnt
+        Glide.with(context).load(sanpham.hinh).into(viewHolder.hinh!!)
         //        ImageView selectedImage = (ImageView) view.findViewById(R.id.buckysImage);
         //viewHolder.hinh.setImageResource(sanpham.getHinh());
         return view

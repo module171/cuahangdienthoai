@@ -68,7 +68,7 @@ class TrangChu : AppCompatActivity() {
         setContentView(R.layout.activity_trangchu)
         AnhXa()
         val sharedPreferences = getSharedPreferences(TrangChu.Companion.FILE_NAME, MODE_PRIVATE)
-        TrangChu.Companion.email_user = sharedPreferences.getString("email", "")
+        TrangChu.Companion.email_user = sharedPreferences.getString("email", "")!!
         adapter = DienthoaiAdapter(this, TrangChu.Companion.dienthoaiArrayList)
         getUserIdByEmail(TrangChu.Companion.email_user)
         search!!.setOnClickListener {
@@ -110,11 +110,11 @@ class TrangChu : AppCompatActivity() {
         }
         listView!!.onItemClickListener = OnItemClickListener { adapterView, view, i, l ->
             val intent = Intent(applicationContext, ChiTietSanPham::class.java)
-            val idpro: Int = TrangChu.Companion.dienthoaiArrayList.get(i).getIdproduct()
+            val idpro: Int = TrangChu.Companion.dienthoaiArrayList.get(i).idproduct
             finish()
             intent.putExtra(
                 "idproduct",
-                TrangChu.Companion.dienthoaiArrayList.get(i).getIdproduct()
+                TrangChu.Companion.dienthoaiArrayList.get(i).idproduct
             )
             startActivity(intent)
         }
@@ -173,7 +173,7 @@ class TrangChu : AppCompatActivity() {
                 e.printStackTrace()
             }
         }) { error -> Toast.makeText(applicationContext, "Lỗi $error", Toast.LENGTH_SHORT).show() }
-        VolleySingleton.Companion.getInstance(this).getRequestQueue().add<String>(stringRequest)
+        VolleySingleton.Companion.getInstance(this).requestQueue?.add<String>(stringRequest)
         //        requestQueue.add(stringRequest);
     }
 
@@ -249,7 +249,7 @@ class TrangChu : AppCompatActivity() {
             }
         }
         //        requestQueue.add(stringRequest);
-        VolleySingleton.Companion.getInstance(this).getRequestQueue().add<String>(stringRequest)
+        VolleySingleton.Companion.getInstance(this).requestQueue?.add<String>(stringRequest)
         return TrangChu.Companion.userid
     }
 
@@ -271,6 +271,6 @@ class TrangChu : AppCompatActivity() {
         var dienthoaiArrayList = ArrayList<DienThoai>()
         private const val FILE_NAME = "myFile"
         var email_user = ""
-        private const val userid = 0
+        private var userid = 0
     }
 }

@@ -65,6 +65,7 @@ import java.io.UnsupportedEncodingException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.HashMap
+import kotlin.experimental.and
 
 class DangKy : AppCompatActivity() {
     private var nameuser: EditText? = null
@@ -167,7 +168,7 @@ class DangKy : AppCompatActivity() {
             val array = md.digest(md5.toByteArray(charset("UTF-8")))
             val sb = StringBuffer()
             for (i in array.indices) {
-                sb.append(Integer.toHexString(array[i] and 0xFF or 0x100).substring(1, 3))
+                sb.append(Integer.toHexString((array[i] and 0xFF.toByte()).toInt()).substring(1, 3))
             }
             return sb.toString()
         } catch (e: NoSuchAlgorithmException) {

@@ -67,7 +67,7 @@ class DanhSachSP : AppCompatActivity() {
         setContentView(R.layout.activity_danhsach)
         listView = findViewById(R.id.mylistview_Danhsachsp)
         adapter = DienthoaiAdapter(this, DanhSachSP.Companion.dienthoaiArrayList)
-        listView.setAdapter(adapter)
+        listView?.setAdapter(adapter)
         getdata()
         trove = findViewById<View>(R.id.IV_BackToHome) as ImageView
         trove!!.setOnClickListener {
@@ -76,14 +76,14 @@ class DanhSachSP : AppCompatActivity() {
             intent.putExtra("email_user", TrangChu.Companion.email_user)
             startActivity(intent)
         }
-        listView.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
+        listView?.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
             finish()
             //                Toast.makeText(getApplicationContext(), "" + dienthoaiArrayList.get(i).getIdproduct(), Toast.LENGTH_SHORT).show();
             val intent = Intent(applicationContext, ChiTietSanPham::class.java)
-            val idpro: Int = DanhSachSP.Companion.dienthoaiArrayList.get(i).getIdproduct()
+            val idpro: Int = DanhSachSP.Companion.dienthoaiArrayList.get(i).idproduct
             intent.putExtra(
                 "idproduct",
-                DanhSachSP.Companion.dienthoaiArrayList.get(i).getIdproduct()
+                DanhSachSP.Companion.dienthoaiArrayList.get(i).idproduct
             )
             startActivity(intent)
         })

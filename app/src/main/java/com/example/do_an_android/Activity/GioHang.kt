@@ -76,7 +76,8 @@ class GioHang : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
         sharedPreferences = getSharedPreferences(GioHang.Companion.FILE_NAME, MODE_PRIVATE)
-        GioHang.Companion.iduser_share = sharedPreferences.getInt("iduser", 0)
+        GioHang.Companion.iduser_share = sharedPreferences!!.getInt("iduser", 0)
+
         getidorder = findViewById<View>(R.id.txt_idorder) as TextView
         tongtiengh = findViewById<View>(R.id.tongTienGioHang) as TextView
         tongSoLuong = findViewById<View>(R.id.sumincart) as TextView
@@ -94,10 +95,10 @@ class GioHang : AppCompatActivity() {
         }
         listView = findViewById(R.id.mylistview_Danhsachsp)
         adapter = itemInCartAdapter(this, GioHang.Companion.giohangArrayList)
-        listView.setAdapter(adapter)
+        listView?.setAdapter(adapter)
         getdata(GioHang.Companion.iduser_share)
         muaHang = findViewById(R.id.muaHang)
-        muaHang.setOnClickListener(View.OnClickListener { thanhtoan() })
+        muaHang?.setOnClickListener(View.OnClickListener { thanhtoan() })
     }
 
     fun getdata(id: Int) {
@@ -124,7 +125,7 @@ class GioHang : AppCompatActivity() {
                         GioHang.Companion.giohangArrayList.add(gh)
                         adapter!!.notifyDataSetChanged()
                     }
-                    getidorder.setText(GioHang.Companion.idorder.toString())
+                    getidorder?.setText(GioHang.Companion.idorder.toString())
                     val editor =
                         getSharedPreferences(GioHang.Companion.FILE_NAME, MODE_PRIVATE).edit()
                     editor.putInt("idorder_gh", GioHang.Companion.idorder)
@@ -176,7 +177,7 @@ class GioHang : AppCompatActivity() {
     companion object {
         private const val FILE_NAME = "myFile"
         var giohangArrayList = ArrayList<cart>()
-        private const val iduser_share = 0
-        private const val idorder = 0
+        private var iduser_share = 0
+        private var idorder = 0
     }
 }

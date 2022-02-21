@@ -77,8 +77,8 @@ class DatHang : AppCompatActivity() {
         setContentView(R.layout.activity_dathang)
         anhxa()
         sharedPreferences = getSharedPreferences(FILE_NAME, MODE_PRIVATE)
-        idorder = sharedPreferences.getInt("idorder_gh", 0)
-        tien = sharedPreferences.getInt("tongtien", 0)
+        idorder = sharedPreferences!!.getInt("idorder_gh", 0)
+        tien = sharedPreferences!!.getInt("tongtien", 0)
         val formatter = DecimalFormat("###,###,###")
         tongtien!!.text = "Tổng tiền: " + formatter.format(tien.toLong()) + " VND"
         dathang!!.setOnClickListener(View.OnClickListener {

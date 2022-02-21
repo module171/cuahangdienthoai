@@ -67,7 +67,7 @@ class DanhSachLoaiSP_Admin : AppCompatActivity() {
         setContentView(R.layout.activity_danh_sach_loai_sp_admin)
         listView = findViewById(R.id.mylistview_DanhsachLoaispAdmin)
         adapter = LoaiAdapter(this, loaiArrayList)
-        listView.setAdapter(adapter)
+        listView?.setAdapter(adapter)
         getdata()
         them = findViewById<View>(R.id.themloaisp) as ImageView
         them!!.setOnClickListener {

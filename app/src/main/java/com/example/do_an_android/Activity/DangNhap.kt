@@ -59,6 +59,8 @@ import androidx.viewpager.widget.ViewPager
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.DatePickerDialog
 import android.graphics.drawable.ColorDrawable
+import kotlin.experimental.and
+import kotlin.experimental.or
 
 class DangNhap : AppCompatActivity() {
     var email: EditText? = null
@@ -101,13 +103,13 @@ class DangNhap : AppCompatActivity() {
         email = findViewById(R.id.edtEmail_Dangnhap)
         password = findViewById(R.id.edtPassword_Dangnhap)
         remember_me = findViewById(R.id.remember_me)
-        remember_me.setChecked(false)
+        remember_me?.setChecked(false)
         //Auto điền pw email sau khi logout
         val sharedPreferences = getSharedPreferences(DangNhap.Companion.FILE_SAVE, MODE_PRIVATE)
         val edittext_phone = sharedPreferences.getString("edittext_phone", "")
         val edittext_password = sharedPreferences.getString("edittext_password", "")
-        email.setText(edittext_phone)
-        password.setText(edittext_password)
+        email?.setText(edittext_phone)
+        password?.setText(edittext_password)
     }
 
     private fun event() {
@@ -195,7 +197,7 @@ class DangNhap : AppCompatActivity() {
             val array = md.digest(md5.toByteArray(charset("UTF-8")))
             val sb = StringBuffer()
             for (i in array.indices) {
-                sb.append(Integer.toHexString(array[i] and 0xFF or 0x100).substring(1, 3))
+                sb.append(Integer.toHexString((array[i] and 0xFF.toByte()).toInt()).substring(1, 3))
             }
             return sb.toString()
         } catch (e: NoSuchAlgorithmException) {

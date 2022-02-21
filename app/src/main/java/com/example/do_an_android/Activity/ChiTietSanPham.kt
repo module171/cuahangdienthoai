@@ -81,7 +81,7 @@ class ChiTietSanPham : AppCompatActivity() {
         setContentView(R.layout.activity_chi_tiet_san_pham)
         anhxa()
         sharedPreferences = getSharedPreferences(ChiTietSanPham.Companion.FILE_NAME, MODE_PRIVATE)
-        ChiTietSanPham.Companion.iduser_share = sharedPreferences.getInt("iduser", 0)
+        ChiTietSanPham.Companion.iduser_share = sharedPreferences!!.getInt("iduser", 0)
         txtdatmua!!.setOnClickListener {
             finish()
             val it = Intent(this@ChiTietSanPham, TrangChu::class.java)
@@ -95,7 +95,7 @@ class ChiTietSanPham : AppCompatActivity() {
         id = intent.getIntExtra("idproduct", -1)
         data
         getIdOrder(ChiTietSanPham.Companion.iduser_share)
-        ChiTietSanPham.Companion.idorder = sharedPreferences.getInt("idorder", 0)
+        ChiTietSanPham.Companion.idorder = sharedPreferences!!.getInt("idorder", 0)
         txtdatmua!!.setOnClickListener { insertProduct() }
     }
 
@@ -179,7 +179,7 @@ class ChiTietSanPham : AppCompatActivity() {
                 }
             }
             //        requestQueue.add(stringRequest);
-            VolleySingleton.Companion.getInstance(this).getRequestQueue().add<String>(stringRequest)
+            VolleySingleton.Companion.getInstance(this).requestQueue?.add<String>(stringRequest)
         }
 
     private fun getIdOrder(iduser: Int) {
@@ -272,10 +272,10 @@ class ChiTietSanPham : AppCompatActivity() {
 
     companion object {
         private const val FILE_NAME = "myFile"
-        private const val iduser_share = 0
-        private const val idorder = 0
+        private var iduser_share = 0
+        private var idorder = 0
         private const val kiemtra = 0
-        private const val giasp = 0
-        private val idget: String? = null
+        private var giasp = 0
+        private var idget: String? = null
     }
 }

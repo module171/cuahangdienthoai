@@ -68,15 +68,15 @@ class TimKiemSP : AppCompatActivity() {
         id = intent.getStringExtra("search_product")
         adapterSearch = DienthoaiAdapter(this, TimKiemSP.Companion.dienthoaiArrayList1)
         listView1 = findViewById(R.id.mylistview1)
-        listView1.setAdapter(adapterSearch)
+        listView1?.setAdapter(adapterSearch)
         getdata()
-        listView1.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
+        listView1?.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
             finish()
             val intent = Intent(applicationContext, ChiTietSanPham::class.java)
-            val idpro: Int = TimKiemSP.Companion.dienthoaiArrayList1.get(i).getIdproduct()
+            val idpro: Int = TimKiemSP.Companion.dienthoaiArrayList1.get(i).idproduct
             intent.putExtra(
                 "idproduct",
-                TimKiemSP.Companion.dienthoaiArrayList1.get(i).getIdproduct()
+                TimKiemSP.Companion.dienthoaiArrayList1.get(i).idproduct
             )
             startActivity(intent)
         })

@@ -67,6 +67,7 @@ import android.widget.LinearLayout
 import android.widget.DatePicker
 import android.app.DatePickerDialog
 import android.graphics.drawable.ColorDrawable
+import kotlin.experimental.and
 
 class ThongTinCaNhan : AppCompatActivity() {
     var setListener: OnDateSetListener? = null
@@ -170,66 +171,66 @@ class ThongTinCaNhan : AppCompatActivity() {
         admin_logout = findViewById(R.id.admin_logout)
         admin_profile = findViewById(R.id.admin_profile)
         layout_admin_profile = findViewById(R.id.layout_admin_profile)
-        layout_admin_profile.setVisibility(View.GONE)
+        layout_admin_profile?.setVisibility(View.GONE)
         thaydoithongtin = findViewById(R.id.thaydoithongtin)
         luuthaydoi = findViewById(R.id.luuthaydoi)
-        luuthaydoi.setVisibility(View.GONE)
+        luuthaydoi?.setVisibility(View.GONE)
         huythaydoi = findViewById(R.id.huythaydoi)
-        huythaydoi.setVisibility(View.GONE)
-        thaydoithongtin.setOnClickListener(View.OnClickListener {
-            txtten.setEnabled(true)
-            txtten.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
-            txtsdt.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
-            txtgender.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
-            txtpass.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
-            txtngaysinh.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
-            txtsdt.setEnabled(true)
-            txtgender.setEnabled(true)
-            txtngaysinh.setClickable(true)
-            txtpass.setEnabled(true)
-            luuthaydoi.setVisibility(View.VISIBLE)
-            huythaydoi.setVisibility(View.VISIBLE)
+        huythaydoi?.setVisibility(View.GONE)
+        thaydoithongtin?.setOnClickListener(View.OnClickListener {
+            txtten?.setEnabled(true)
+            txtten?.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
+            txtsdt?.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
+            txtgender?.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
+            txtpass?.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
+            txtngaysinh?.setBackgroundResource(R.drawable.custom_edittext_noframe_no)
+            txtsdt?.setEnabled(true)
+            txtgender?.setEnabled(true)
+            txtngaysinh?.setClickable(true)
+            txtpass?.setEnabled(true)
+            luuthaydoi?.setVisibility(View.VISIBLE)
+            huythaydoi?.setVisibility(View.VISIBLE)
         })
-        luuthaydoi.setOnClickListener(View.OnClickListener {
-            txtten.setEnabled(false)
-            txtsdt.setEnabled(false)
-            txtgender.setEnabled(false)
-            txtpass.setEnabled(false)
-            txtngaysinh.setClickable(false)
-            txtten.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtsdt.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtgender.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtpass.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtngaysinh.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            luuthaydoi.setVisibility(View.GONE)
-            huythaydoi.setVisibility(View.GONE)
+        luuthaydoi?.setOnClickListener(View.OnClickListener {
+            txtten?.setEnabled(false)
+            txtsdt?.setEnabled(false)
+            txtgender?.setEnabled(false)
+            txtpass?.setEnabled(false)
+            txtngaysinh?.setClickable(false)
+            txtten?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtsdt?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtgender?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtpass?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtngaysinh?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            luuthaydoi?.setVisibility(View.GONE)
+            huythaydoi?.setVisibility(View.GONE)
             updateInfor()
         })
-        huythaydoi.setOnClickListener(View.OnClickListener {
+        huythaydoi?.setOnClickListener(View.OnClickListener {
             data
-            txtten.setEnabled(false)
-            txtsdt.setEnabled(false)
-            txtgender.setEnabled(false)
-            txtpass.setEnabled(false)
-            txtten.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtsdt.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtgender.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtpass.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            txtngaysinh.setBackgroundResource(R.drawable.custom_edittext_noframe)
-            luuthaydoi.setVisibility(View.GONE)
-            huythaydoi.setVisibility(View.GONE)
-            txtngaysinh.setClickable(false)
+            txtten?.setEnabled(false)
+            txtsdt?.setEnabled(false)
+            txtgender?.setEnabled(false)
+            txtpass?.setEnabled(false)
+            txtten?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtsdt?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtgender?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtpass?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            txtngaysinh?.setBackgroundResource(R.drawable.custom_edittext_noframe)
+            luuthaydoi?.setVisibility(View.GONE)
+            huythaydoi?.setVisibility(View.GONE)
+            txtngaysinh?.setClickable(false)
         })
         val calendar = Calendar.getInstance()
         val year = calendar[Calendar.YEAR]
-        val month = calendar[Calendar.MONTH]
+        var month = calendar[Calendar.MONTH]
         val day = calendar[Calendar.DAY_OF_MONTH]
         setListener = OnDateSetListener { view: DatePicker?, year1: Int, month1: Int, day1: Int ->
-            month1 = month1 + 1
+            month = month1 + 1
             val date = "$day1/$month1/$year1"
-            txtngaysinh.setText(date)
+            txtngaysinh?.setText(date)
         }
-        txtngaysinh.setOnClickListener(View.OnClickListener {
+        txtngaysinh?.setOnClickListener(View.OnClickListener {
             val datePickerDialog = DatePickerDialog(
                 this@ThongTinCaNhan, R.style.DatePickerTheme, setListener, year, month, day
             )
@@ -291,7 +292,7 @@ class ThongTinCaNhan : AppCompatActivity() {
             val array = md.digest(md5.toByteArray(charset("UTF-8")))
             val sb = StringBuffer()
             for (i in array.indices) {
-                sb.append(Integer.toHexString(array[i] and 0xFF or 0x100).substring(1, 3))
+                sb.append(Integer.toHexString((array[i] and 0xFF.toByte()).toInt()).substring(1, 3))
             }
             return sb.toString()
         } catch (e: NoSuchAlgorithmException) {

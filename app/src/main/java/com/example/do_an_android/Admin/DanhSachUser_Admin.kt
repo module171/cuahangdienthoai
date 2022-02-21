@@ -68,7 +68,7 @@ class DanhSachUser_Admin : AppCompatActivity() {
         setContentView(R.layout.activity_danh_sach_user_admin)
         listView = findViewById(R.id.mylistview_DanhsachUserAdmin)
         adapter = UserAdapter(this, userArrayList)
-        listView.setAdapter(adapter)
+        listView?.setAdapter(adapter)
         getdata()
         trove = findViewById<View>(R.id.IV_BackToHome) as ImageView
         trove!!.setOnClickListener {

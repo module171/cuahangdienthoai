@@ -67,7 +67,7 @@ class DanhSachSP_Admin : AppCompatActivity() {
         setContentView(R.layout.activity_danh_sach_sp_admin)
         listView = findViewById(R.id.mylistview_DanhsachspAdmin)
         adapter = DienthoaiAdapter(this, dienthoaiArrayList)
-        listView.setAdapter(adapter)
+        listView?.setAdapter(adapter)
         getdata()
         trove = findViewById<View>(R.id.IV_BackToHome) as ImageView
         trove!!.setOnClickListener {
@@ -80,11 +80,11 @@ class DanhSachSP_Admin : AppCompatActivity() {
             finish()
             startActivity(Intent(applicationContext, ThemSP::class.java))
         }
-        listView.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
+        listView?.setOnItemClickListener(OnItemClickListener { adapterView, view, i, l ->
             finish()
             val intent = Intent(applicationContext, ChiTietSanPham::class.java)
-            val idpro = dienthoaiArrayList[i].getIdproduct()
-            intent.putExtra("idproduct", dienthoaiArrayList[i].getIdproduct())
+            val idpro = dienthoaiArrayList[i].idproduct
+            intent.putExtra("idproduct", dienthoaiArrayList[i].idproduct)
             startActivity(intent)
         })
     }

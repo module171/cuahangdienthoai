@@ -1,6 +1,6 @@
-package com.example.do_an_android.Activityimport
+package com.example.do_an_android.Activity
 
-com.example.do_an_android.Model.LoaiSanPham
+import com.example.do_an_android.Model.LoaiSanPham
 import android.widget.BaseAdapter
 import android.widget.TextView
 import android.view.ViewGroup

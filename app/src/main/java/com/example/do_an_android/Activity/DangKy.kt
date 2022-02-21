@@ -154,7 +154,7 @@ class DangKy : AppCompatActivity() {
                     val param = HashMap<String, String>()
                     param["nameuser"] = nameuser
                     param["email"] = email
-                    param["password"] = MD5(password)!!
+                    param["password"] = password
                     return param
                 }
             }

@@ -169,7 +169,7 @@ class DangNhap : AppCompatActivity() {
                 override fun getParams(): Map<String, String>? {
                     val param = HashMap<String, String>()
                     param["email"] = email
-                    param["password"] = MD5(password)!!
+                    param["password"] = password
                     return param
                 }
             }
